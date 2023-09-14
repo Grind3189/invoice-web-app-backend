@@ -53,6 +53,7 @@ export const register = async (req, res, next) => {
         },
       ],
       total: 1800.9,
+      creator: result._id
     })
     await dummyInvoice.save()
     const { password, ...info } = result._doc
