@@ -88,7 +88,7 @@ export const login = async (req, res, next) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain: "https://invoice-by-grind.netlify.app",
+        origin: "https://invoice-by-grind.netlify.app",
       })
       .status(200)
       .json({ userId: user._id.toString() })
