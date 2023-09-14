@@ -9,7 +9,7 @@ const app = express()
 dotenv.config()
 
 const corsOptions = {
-    origin: 'https://invoice-api-xuia.onrender.com',
+    origin: 'https://invoice-by-grind.netlify.app',
     methods: 'GET, POST, DELETE, PUT',        
     credentials: true  
 }
