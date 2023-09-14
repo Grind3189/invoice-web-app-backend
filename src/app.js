@@ -9,15 +9,20 @@ const app = express()
 dotenv.config()
 
 const corsOptions = {
-    origin: 'https://invoice-by-grind.netlify.app',
+    origin: 'https://invoice-duz6.onrender.com',
     methods: 'GET, POST, DELETE, PUT',        
     credentials: true  
 }
 
 app.use(cors(corsOptions))
-
 app.use(express.json())
 app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'dist')))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend-dist', 'index.html'));
+});
+
 
 app.use('/api', invoiceRouter)
 app.use('/api', authRouter)
