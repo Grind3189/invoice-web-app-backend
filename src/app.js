@@ -9,7 +9,7 @@ const app = express()
 dotenv.config()
 
 const corsOptions = {
-    origin: 'hhttps://invoice-duz6.onrender.com',
+    origin: 'https://invoice-api-xuia.onrender.com',
     methods: 'GET, POST, DELETE, PUT',        
     credentials: true  
 }
