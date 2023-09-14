@@ -4,8 +4,9 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import invoiceRouter from './routes/invoice.route.js'
 import authRouter from './routes/auth.route.js'
-import cookieParser from "cookie-parser";
-import path from 'path'
+import cookieParser from "cookie-parser"
+import path, {dirname} from 'path'
+import { fileURLToPath } from 'url'
 const app = express()
 dotenv.config()
 
@@ -18,6 +19,9 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(cookieParser())
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname, 'dist')))
 
 app.get('*', (req, res) => {
