@@ -87,7 +87,7 @@ export const login = async (req, res, next) => {
       .cookie("accessToken", token, {
         httpOnly: true,
         secure: true,
-        sameSite: "Lax",
+        sameSite: "None",
         origin: "https://invoice-by-grind.netlify.app",
         
       })
