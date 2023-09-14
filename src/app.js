@@ -5,6 +5,7 @@ import cors from 'cors'
 import invoiceRouter from './routes/invoice.route.js'
 import authRouter from './routes/auth.route.js'
 import cookieParser from "cookie-parser";
+import path from 'path'
 const app = express()
 dotenv.config()
 
