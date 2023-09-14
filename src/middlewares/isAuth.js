@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken"
 
 export const isAuth = (req, res, next) => {
   const token = req.cookies.accessToken
+  console.log(token)
 
   if (!token) {
     return res.status(401).send("Not authenticated")
@@ -15,8 +16,7 @@ export const isAuth = (req, res, next) => {
     console.error(err)
     return res.status(401).send("Not authenticated")
   }
-
- 
+  
   req.userId = decodedToken.userId
   next()
 
