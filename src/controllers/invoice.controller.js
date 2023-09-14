@@ -9,6 +9,7 @@ export const getAllInvoice = async (req, res, next) => {
 
 export const getInvoice = async (req, res, next) => {
   const { invoiceId } = req.params
+  console.log(invoiceId)
   try {
     const invoice = await Invoice.findById(invoiceId)
     if (!invoice) {
@@ -28,7 +29,7 @@ export const createInvoice = async (req, res, next) => {
     const user = await User.findById(req.userId)
 
     if(!user) {
-      return next(createError(403,"No user exist"))
+      return next(createError(400,"No user exist"))
     }
 
     const {
@@ -64,7 +65,7 @@ export const createInvoice = async (req, res, next) => {
 
     const result = await newInvoice.save()
     if (!result) {
-      return next(createError(403,"An error occured while creating invoice"))
+      return next(createError(400,"An error occured while creating invoice"))
     }
 
     res.status(201).json(result)
@@ -95,7 +96,7 @@ export const editInvoice = async (req, res, next) => {
   }
 
   if(invoice.creator.toString() !== req.userId.toString()) {
-    return next(createError(403,"You can only edit your invoice"))
+    return next(createError(400,"You can only edit your invoice"))
   }
 
   invoice.createdAt = createdAt
@@ -123,7 +124,7 @@ export const deleteInvoice = async (req, res, next) => {
       
     }
     if(invoice.creator.toString() !== req.userId.toString()) {
-      return next(createError(403,"You can only delete your own invoice"))
+      return next(createError(400,"You can only delete your own invoice"))
     }
 
     const result = await Invoice.findByIdAndDelete(invoiceId)

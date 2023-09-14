@@ -5,7 +5,7 @@ export const isAuth = (req, res, next) => {
   console.log(token)
 
   if (!token) {
-    return res.status(401).send("Not authenticated")
+    return res.status(403).send("Not authenticated")
   }
 
   let decodedToken
@@ -14,7 +14,7 @@ export const isAuth = (req, res, next) => {
     decodedToken = jwt.verify(token, process.env.JWT_KEY)
   } catch (err) {
     console.error(err)
-    return res.status(401).send("Not authenticated")
+    return res.status(403).send("Not authenticated")
   }
   
   req.userId = decodedToken.userId
