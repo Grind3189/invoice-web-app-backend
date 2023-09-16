@@ -9,7 +9,7 @@ const app = express()
 dotenv.config()
 
 const corsOptions = {
-    origin: 'https://invoice-by-grind.netlify.app',
+    origin: ['https://invoice-by-grind.netlify.app', 'http://localhost:5173'],
     methods: 'GET, POST, DELETE, PUT',        
     credentials: true  
 }
